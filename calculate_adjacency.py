@@ -13,19 +13,21 @@ data = pd.read_csv("C:/Users/Sean Ankenbruck/Desktop/socialmediadata-beeradvocat
 # print data.head()
 
 test = data[data["review_overall"] >= 3.5]
-print test.head()
+#print test.head()
 
 # Create the lists of unique reviewer and beer names
 
 #List unique values in the data['review_profilename'] column
 reviewers = test.review_profilename.unique()
+print len(reviewers)
 
 #List unique values in the data['beer_name'] column
 beers = test.beer_name.unique()
+print len(beers)
 
 subset = test.pivot_table(values="review_overall", index="review_profilename", columns="beer_name")
 
-print subset
+# print subset
 
 # Create the loops to create intermediary dataframe containing positive reviews
 #positive_reviews = pd.DataFrame(index=reviewers, columns=beers)
@@ -41,19 +43,13 @@ print subset
 # 			if rating_overall[i] > 3.5 & rating_overall[j] > 3.5:
 # 				matrix[i,j] += 1
 
-# count = 0
-# for index, row in test.iterrows():
-#     for x in reviewers:
-#     	for i in beers:
-#     		for j in beers:
-#     			if row["review_profilename"] ==x and row["beer_name"] == i and row["review_overall"] >= 3.5:
-#     				print row
-    			
-	# 		for j in beers:
-	# 			if rating_overall[j] > 3.5:
-	# 				matrix[i,j] += 1
+positive_reviews = pd.DataFrame(index = beers, columns = beers)
+positive_reviews.fillna(0)
+count = 0
+for x in reviewers:
+	for i in beers:
+		for j in beers:
+			if subset.get_value(x,i) and subset.get_value(x,j):
+				positive_reviews.loc[i,j] += 1
 
 
-# iterate through all combinations of beers
-## check if a person has reviewed both and the reviews are > 3.5
-### count the number for each
