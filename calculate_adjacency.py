@@ -12,28 +12,28 @@ data = pd.read_csv("C:/Users/Sean Ankenbruck/Desktop/socialmediadata-beeradvocat
 # First 5 rows
 # print data.head()
 
-test = data[data["review_overall"] < 3.5]
+test = data[data["review_overall"] >= 3.5]
 #print test.head()
 
 
 # Create a pivot table from the dataframe with profile names as indexes
-subset = test.pivot_table(values="review_overall", index="review_profilename", columns="beer_name")
+subset = test.pivot_table(values="review_overall", index="review_profilename", columns="beer_style")
 subset = subset.fillna(0)
 
 # Due to memory constraints, we have to work in increments (parallel processing would remedy this)
-subset = subset[500:]
+subset = subset[:100]
 
 # Output review_profilename values to csv in order to use them in the reviewers variable below
-#subset.to_csv('C:\...\subset500_end.csv')
+#subset.to_csv('C:\Users\Sean Ankenbruck\Desktop\socialmediadata-beeradvocate\code\subset100.csv')
 
 # Create the lists of unique reviewer(subset) and beer names(all unique)
 
 #List unique values in the data['review_profilename'] column -> must obtain these values in the subset.to_csv line above
-reviewers = ["jtierney89",	"juju7",	"jujubeast6000",	"julian",	"jwinship83",	"kajerm",	"katan",	"kazmanbrew",	"kbub6f",	"kdoc8",	"kegger22",	"kgotcher",	"kimcgolf",	"kingcrowing",	"kmpitz2",	"lackenhauser",	"lacqueredmouse",	"leaddog",	"lovindahops",	"luxbwin",	"malty",	"marlinsfan4",	"marty21",	"matjack85",	"mattcrill",	"maxpower",	"mcann2pu",	"mccordbmw",	"mcmidc",	"mduncan",	"meathookjones",	"meatyard",	"mentor",	"merlin48",	"metter98",	"mhewes",	"mikesgroove",	"mithrascruor",	"mjaskula",	"mjhorn",	"mjl21",	"mjuthewise",	"mntlover",	"mobyfann",	"mooseisloose",	"morimech",	"mothman",	"moulefrite",	"moz9",	"mrandypandy",	"mrfrancis",	"mudbug",	"mulder1010",	"nekronos",	"nflmvp",	"ngandhi",	"ngeunit1",	"nickd717",	"nickfl",	"nickthegun12",	"nickynick",	"nokes",	"northaustin",	"northyorksammy",	"nortmand",	"notchucknorris",	"nppeders",	"nrmiller",	"nsmartell",	"number1bum",	"oberon",	"objectivemonkey",	"oggg",	"olmatty",	"onix1agr",	"output01x",	"paterlodie",	"patvibrato",	"paulieatworld",	"pburland23",	"peabody",	"pecokid",	"pgenius",	"philbertk",	"plaid75",	"pmatz2",	"portia99",	"ppoitras",	"prototypic",	"psbmumbles",	"psuKinger",	"pwoods",	"pzrhsau",	"quaybr",	"rajendra82",	"rand",	"raoulduke37",	"rastaman",	"rfgetz",	"rhoadsrage",	"riored4v",	"ritzkiss",	"robkeely",	"roblowther",	"rockstarnati",	"rodenbach99",	"russpowell",	"ryanocerus",	"rye726",	"saintwarrick",	"sbe1",	"schmitter",	"schoolteacher",	"scooter231",	"scootny",	"scottyf1",	"seand",	"seaoflament",	"sethmeister",	"sfprint",	"shaunb81",	"shbobdb",	"sholland119",	"silentjay",	"sinstaineddemon",	"siradmiralnelson",	"sixerofelixir",	"slitherySOB",	"snowench",	"sockeye101",	"sommersb",	"soper2000",	"spointon",	"squilky",	"srandycarter",	"starrdogg",	"stcules",	"stegmakk",	"steinlifter",	"stephendr",	"strangemusic",	"stulowitz",	"suedehead",	"sulldaddy",	"superdedooperboy",	"sweetkness",	"swid",	"t420o",	"taez555",	"tapman",	"tastybeer",	"tchenery",	"tedpeer",	"tempest",	"tgbljb",	"thagr81us",	"the42ndtourist",	"thekevlarkid",	"therica",	"tigg924",	"timtim",	"tjkinate",	"tkepx182",	"tmoneyba",	"tpd975",	"treque",	"trevorjn06",	"trumick",	"twbrewer",	"twi1609372",	"twiggamortis420",	"twilight",	"tzieser",	"ujsplace",	"ultralarry2006",	"vickersspitfire",	"walteez",	"warnerry",	"warrenc",	"wavz",	"wcudwight",	"weasbri",	"weeare138",	"whitemomba",	"whynot44",	"wnh",	"woemad",	"womencantsail",	"woodychandler",	"woosterbill",	"wspscott",	"yakko",	"yemenmocha",	"younger35",	"zander4dawin",	"zeff80",	"zymurgy4all"]
+reviewers = ["100floods",	"3Vandoo",	"ADR",	"ADZA",	"AKBelgianBeast",	"AMo",	"AaronRed",	"Ackman",	"AdamGarcia",	"Aenema",	"Agold",	"AltBock",	"Anthony1",	"Atron67",	"Augustiner719",	"Axic10",	"AylwinForbes",	"BBP",	"BDJake",	"BDTyre",	"BEERchitect",	"Backer2004",	"BardofBeer",	"BeardedBoffin",	"BeerAngel",	"BeerFMAndy",	"BeerForMuscle",	"BeerLover48Fan",	"BeerLover729",	"BeerLover99",	"BeerMansGirl",	"BeerResearcher",	"BeerSox",	"BeerTaster",	"Bierman9",	"BigPlay1824",	"Bighuge",	"BitteBier",	"BlackHaddock",	"Blakaeris",	"BoitSansSoif",	"Bonis",	"Brad007",	"BradLikesBrew",	"Brent",	"BrewMaster",	"BrewnZ",	"Brewnami",	"Brian700",	"BuckSpin",	"BuckeyeNation",	"Buebie",	"Bung",	"CaptDavyJones",	"ChainGangGuy",	"Chaney",	"CharlesRiver",	"Chaz",	"ClassyLadyJen",	"Clembo1957",	"ColdPoncho",	"CrashWorship",	"Crosling",	"DNA",	"Dave128",	"DaveHS",	"DeaconBluez",	"Dentist666",	"Derek",	"Dertbert",	"DesMoinesMike",	"Deuane",	"DijonKetchup",	"DirtyPenny",	"Dogbrick",	"DoktaHops",	"DovaliHops",	"DrDemento456",	"DrJay",	"Draughted",	"Drew966",	"DrewV",	"Drinkerofales",	"DrunkMcDermott",	"Dubbercody",	"Duff27",	"Dukeofearl",	"ElGrecoVerde",	"ElGuapo",	"FickleBeast",	"Flightoficarus",	"FosterJM",	"FreshHawk",	"Fuzzy1",	"GCBrewingCo",	"GabrielM",	"Gaisgeil",	"GallowsThief",	"GarrettB",	"Gavage"]
 print len(reviewers)
 
 #List unique values in the data['beer_name'] column -> all unique beers regardless of subset
-beers = test.beer_name.unique()
+beers = test.beer_style.unique()
 print len(beers)
 
 
@@ -53,6 +53,6 @@ for x in reviewers:
 
 
 # Output results in increments (4 in total)
-positive_reviews.to_csv('C:\...\_adjacency500_ALL.csv')
+positive_reviews.to_csv('C:\Users\Sean Ankenbruck\Desktop\socialmediadata-beeradvocate\code\_adjacency_100style.csv')
 
 # Next -> get data ready for network analysis
